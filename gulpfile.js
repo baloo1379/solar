@@ -6,19 +6,22 @@ let gulp = require('gulp'),
     concat = require('gulp-concat'),
     autoprefixer = require('gulp-autoprefixer'),
     sourcemaps = require('gulp-sourcemaps'),
-    htmlreplace = require('gulp-html-replace');
+    htmlreplace = require('gulp-html-replace'),
+    gulpCopy = require('gulp-copy');
 
 
 let source = {
     sass: 'src/sass/*.scss',
     css: 'src/css',
-    js: 'src/js/*.js'
+    js: 'src/js/*.js',
+    images: 'src/images/*'
 
 }
 
 let dist = {
     css: 'dist/css',
-    js: 'dist/js'
+    js: 'dist/js',
+    images: 'dist/images'
 }
 
 gulp.task('browserSync', () => {
@@ -72,6 +75,11 @@ gulp.task('production:sass', () => {
             extname: ".css"
         }))
         .pipe(gulp.dest(dist.css))
+})
+
+gulp.task('production:copy', ()=>{
+    return gulp.src(source.images)
+        .pipe(gulp.dest(dist.images))
 })
 
 gulp.task('production', ['production:sass', 'production:html'], () => {

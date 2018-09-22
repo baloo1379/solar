@@ -186,14 +186,50 @@
 
 </section>
 <section class="contact section">
-    <div class="left"></div>
-    <div class="right">
-        <form action="">
-            <input type="text" placeholder="Name">
-            <input type="email" placeholder="Email">
-            <input type="text" placeholder="Subject">
-            <textarea name="message" id="" cols="30" rows="10" placeholder="Your Massage"></textarea>
-        </form>
+    <div class="container is-desktop">
+        <div class="section has-text-centered">
+            <h3 class="title">Contact Us</h3>
+        </div>
+        <div class="columns">
+            <div class="column is-half">
+                <div class="section no-padding-bottom">
+                    <p class="subtitle">New York</p>
+                    <p>709 Honey Creek Dr.</p>
+                    <p>NY 10028</p>
+                </div>
+                <div class="section">
+                    <img src="images/map.png" alt="" class="image">
+                </div>
+            </div>
+            <div class="column is-half">
+                <form action="" class="">
+                    <div class="field">
+                        <label for="name" class="label">Name:</label>
+                        <div class="control"><input id="name" type="text" name="name" placeholder="John" class="input">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="email" class="label">E-mail:</label>
+                        <div class="control"><input id="email" type="email" name="email" placeholder="john@example.com"
+                                                    class="input"></div>
+                    </div>
+                    <div class="field">
+                        <label for="subject" class="label">Subject:</label>
+                        <div class="control"><input id="subject" type="text" name="subject" placeholder="Roof repair"
+                                                    class="input"></div>
+                    </div>
+                    <div class="field">
+                        <label for="" class="label">Your Massage:</label>
+                        <div class="control">
+                            <textarea name="" id="" cols="30" rows="10" class="textarea"></textarea>
+                        </div>
+                    </div>
+                    <div class="field is-grouped is-grouped-right">
+                        <button class="button is-link">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </section>
 <footer class="footer">
