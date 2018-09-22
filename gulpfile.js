@@ -6,9 +6,7 @@ let gulp = require('gulp'),
     concat = require('gulp-concat'),
     autoprefixer = require('gulp-autoprefixer'),
     sourcemaps = require('gulp-sourcemaps'),
-    htmlreplace = require('gulp-html-replace'),
-    gulpCopy = require('gulp-copy');
-
+    htmlreplace = require('gulp-html-replace');
 
 let source = {
     sass: 'src/sass/*.scss',
@@ -16,13 +14,13 @@ let source = {
     js: 'src/js/*.js',
     images: 'src/images/*'
 
-}
+};
 
 let dist = {
     css: 'dist/css',
     js: 'dist/js',
     images: 'dist/images'
-}
+};
 
 gulp.task('browserSync', () => {
     browserSync.init({
@@ -30,7 +28,7 @@ gulp.task('browserSync', () => {
             baseDir: 'src'
         },
     })
-})
+});
 
 gulp.task('sass', () => {
     return gulp.src(source.sass)
@@ -42,23 +40,23 @@ gulp.task('sass', () => {
         .pipe(browserSync.reload({
             stream: true
         }))
-})
+});
 
 gulp.task('watch', ['browserSync', 'sass'], ()=>{
     gulp.watch(source.sass, ['sass'])
-})
+});
 
 gulp.task('clean:dist', function() {
     return del.sync('dist');
-})
+});
 
 gulp.task('production:html', () => {
     return gulp.src('src/index.html')
         .pipe(htmlreplace({
-            'css': 'style.min.css',
+            'css': 'css/style.min.css',
         }))
-        .pipe(gulp.dest('dist/'));
-})
+        .pipe(gulp.dest('dist'));
+});
 
 gulp.task('production:sass', () => {
     return gulp.src(source.sass)
@@ -75,13 +73,13 @@ gulp.task('production:sass', () => {
             extname: ".css"
         }))
         .pipe(gulp.dest(dist.css))
-})
+});
 
 gulp.task('production:copy', ()=>{
     return gulp.src(source.images)
         .pipe(gulp.dest(dist.images))
-})
+});
 
-gulp.task('production', ['production:sass', 'production:html'], () => {
+gulp.task('production', ['production:sass', 'production:html', 'production:copy'], () => {
 
-})
+});
