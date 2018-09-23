@@ -54,6 +54,7 @@ gulp.task('production:html', () => {
     return gulp.src('src/index.html')
         .pipe(htmlreplace({
             'css': 'css/style.min.css',
+            'bulma': 'https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css'
         }))
         .pipe(gulp.dest('dist'));
 });
