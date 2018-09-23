@@ -23,7 +23,6 @@
     <!-- endbuild -->
 
 
-
     <title>Document</title>
 </head>
 <body>
@@ -33,7 +32,8 @@
             <div class="navbar is-transparent">
                 <div class="navbar-brand">
                     <span class="navbar-item"><span class="title is-6">Solar</span></span>
-                    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+                    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu"
+                       aria-expanded="false">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
@@ -167,9 +167,9 @@
                     <p>Jane Galarrdiel</p>
                     <p>CEO Solar Systems</p>
                 </div>
-                <div class="level is-mobile">
+                <div id="reviewNav" class="level is-mobile">
                     <div class="level-item">
-                        <img src="images/back.png" alt="" class="image">
+                        <a id="reviewNavBack" href="#back"><img src="images/back.png" alt="" class="image"></a>
                     </div>
                     <div class="level-item">
                         <img src="images/client1.png" alt="" class="image">
@@ -187,7 +187,7 @@
                         <img src="images/client5.png" alt="" class="image">
                     </div>
                     <div class="level-item">
-                        <img src="images/forward.png" alt="" class="image">
+                        <a id="reviewNavForward" href=""></a><img src="images/forward.png" alt="" class="image">
                     </div>
                 </div>
             </div>
@@ -284,7 +284,7 @@
         if ($navbarBurgers.length > 0) {
 
             // Add a click event on each of them
-            $navbarBurgers.forEach( el => {
+            $navbarBurgers.forEach(el => {
                 el.addEventListener('click', () => {
 
                     // Get the target from the "data-target" attribute
@@ -299,6 +299,17 @@
             });
         }
 
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let rNav = document.getElementById('reviewNav'),
+            back = document.getElementById('reviewNavBack'),
+            forward = document.getElementById('reviewNavForward');
+
+        back.addEventListener('click', event => {
+            event.preventDefault();
+        }, false)
     });
 </script>
 </body>
