@@ -6,20 +6,13 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- build:bulma -->
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css.map">
+
     <!-- endbuild -->
     <!-- build:css -->
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/header.css">
-    <link rel="stylesheet" type="text/css" href="css/nav.css">
-    <link rel="stylesheet" type="text/css" href="css/about.css">
-    <link rel="stylesheet" type="text/css" href="css/portfolio.css">
-    <link rel="stylesheet" type="text/css" href="css/services.css">
-    <link rel="stylesheet" type="text/css" href="css/review.css">
-    <link rel="stylesheet" type="text/css" href="css/contact.css">
-    <link rel="stylesheet" type="text/css" href="css/footer.css">
-    <link rel="stylesheet" type="text/css" href="css/services.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.css.map">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <!-- endbuild -->
 
 
@@ -171,23 +164,23 @@
                     <div class="level-item">
                         <a id="reviewNavBack" href="#back"><img src="images/back.png" alt="" class="image"></a>
                     </div>
-                    <div class="level-item">
+                    <div class="level-item carousel">
                         <img src="images/client1.png" alt="" class="image">
                     </div>
-                    <div class="level-item">
+                    <div class="level-item carousel">
                         <img src="images/client2.png" alt="" class="image">
                     </div>
-                    <div class="level-item">
+                    <div class="level-item carousel is-active">
                         <img src="images/client3.png" alt="" class="image">
                     </div>
-                    <div class="level-item">
+                    <div class="level-item carousel">
                         <img src="images/client4.png" alt="" class="image">
                     </div>
-                    <div class="level-item">
+                    <div class="level-item carousel">
                         <img src="images/client5.png" alt="" class="image">
                     </div>
                     <div class="level-item">
-                        <a id="reviewNavForward" href=""></a><img src="images/forward.png" alt="" class="image">
+                        <a id="reviewNavForward" href=""><img src="images/forward.png" alt="" class="image"></a>
                     </div>
                 </div>
             </div>
@@ -305,12 +298,47 @@
     document.addEventListener('DOMContentLoaded', () => {
         let rNav = document.getElementById('reviewNav'),
             back = document.getElementById('reviewNavBack'),
-            forward = document.getElementById('reviewNavForward');
+            forward = document.getElementById('reviewNavForward'),
+            imgs = document.querySelectorAll('.level-item.carousel');
 
         back.addEventListener('click', event => {
             event.preventDefault();
-        }, false)
-    });
+            //console.log("prev el", imgs);
+            let indexOfCurrentEL=0, indexOfprevEl;
+            imgs.forEach((el, index, imgs) => {
+                if (el.classList.contains("is-active")) {
+                    indexOfCurrentEL = index;
+                }
+            });
+            indexOfprevEl = () => {
+                if(indexOfCurrentEL === 0) {
+                    return imgs.length-1
+                }
+                else return indexOfCurrentEL-1
+            }
+            imgs[indexOfCurrentEL].classList.remove("is-active")
+            imgs[indexOfprevEl()].classList.add("is-active")
+        }, false);
+
+        forward.addEventListener('click', event => {
+            event.preventDefault();
+            //console.log("next el", imgs);
+            let indexOfCurrentEL =0, indexOfnextEl;
+            imgs.forEach((el, index, imgs) => {
+                if (el.classList.contains("is-active")) {
+                    indexOfCurrentEL = index;
+                }
+            });
+            indexOfnextEl = () => {
+                if(indexOfCurrentEL === imgs.length-1) {
+                    return 0
+                }
+                else return indexOfCurrentEL+1
+            }
+            imgs[indexOfCurrentEL].classList.remove("is-active")
+            imgs[indexOfnextEl()].classList.add("is-active")
+        }, false);
+    })
 </script>
 </body>
 </html>
