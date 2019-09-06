@@ -1,7 +1,43 @@
 #header {
-  background-image: linear-gradient(to right, rgba(34, 185, 120, 0.4) 0%, rgba(0, 80, 131, 0.4) 100%), url("../images/hero-background.png");
+  background-image: linear-gradient(to right, rgba(34, 185, 120, 0.4) 0%, rgba(0, 80, 131, 0.4) 100%), url("images/hero-background.png");
 
 }
+
+@include touch {
+  .navbar-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    padding: 0;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    
+    transform: translateX(100%);
+    transition: transform .3s ease-in-out;
+    &.is-active {
+      z-index: 100;
+      transform: translateX(0);
+    }
+  }
+  body.is-active {
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+  }
+  .navbar-brand {
+    z-index: 110;
+    &.is-active {
+      position: absolute;
+      width: 100%;
+      top: 0;
+    }
+  }
+}
+
+
 
 .image {
   margin: 0 auto;
@@ -30,7 +66,7 @@ nav {
 }
 
 .footer {
-  background: url("../images/footer-bg.png") no-repeat fixed bottom;
+  background: url("images/footer-bg.png") no-repeat fixed bottom;
   padding: 6rem 1.5rem;
   background-size: cover;
 }
